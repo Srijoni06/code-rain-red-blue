@@ -9,38 +9,226 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VenueRouteImport } from './routes/venue'
+import { Route as SpeakersRouteImport } from './routes/speakers'
+import { Route as ShowcaseRouteImport } from './routes/showcase'
+import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as N30RouteImport } from './routes/n30'
+import { Route as MascotRouteImport } from './routes/mascot'
+import { Route as HackathonRouteImport } from './routes/hackathon'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShowcaseRegisterRouteImport } from './routes/showcase.register'
+import { Route as HackathonRegisterRouteImport } from './routes/hackathon.register'
 
+const VenueRoute = VenueRouteImport.update({
+  id: '/venue',
+  path: '/venue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeakersRoute = SpeakersRouteImport.update({
+  id: '/speakers',
+  path: '/speakers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShowcaseRoute = ShowcaseRouteImport.update({
+  id: '/showcase',
+  path: '/showcase',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const N30Route = N30RouteImport.update({
+  id: '/n30',
+  path: '/n30',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MascotRoute = MascotRouteImport.update({
+  id: '/mascot',
+  path: '/mascot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HackathonRoute = HackathonRouteImport.update({
+  id: '/hackathon',
+  path: '/hackathon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShowcaseRegisterRoute = ShowcaseRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => ShowcaseRoute,
+} as any)
+const HackathonRegisterRoute = HackathonRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => HackathonRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/hackathon': typeof HackathonRouteWithChildren
+  '/mascot': typeof MascotRoute
+  '/n30': typeof N30Route
+  '/schedule': typeof ScheduleRoute
+  '/showcase': typeof ShowcaseRouteWithChildren
+  '/speakers': typeof SpeakersRoute
+  '/venue': typeof VenueRoute
+  '/hackathon/register': typeof HackathonRegisterRoute
+  '/showcase/register': typeof ShowcaseRegisterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/hackathon': typeof HackathonRouteWithChildren
+  '/mascot': typeof MascotRoute
+  '/n30': typeof N30Route
+  '/schedule': typeof ScheduleRoute
+  '/showcase': typeof ShowcaseRouteWithChildren
+  '/speakers': typeof SpeakersRoute
+  '/venue': typeof VenueRoute
+  '/hackathon/register': typeof HackathonRegisterRoute
+  '/showcase/register': typeof ShowcaseRegisterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/hackathon': typeof HackathonRouteWithChildren
+  '/mascot': typeof MascotRoute
+  '/n30': typeof N30Route
+  '/schedule': typeof ScheduleRoute
+  '/showcase': typeof ShowcaseRouteWithChildren
+  '/speakers': typeof SpeakersRoute
+  '/venue': typeof VenueRoute
+  '/hackathon/register': typeof HackathonRegisterRoute
+  '/showcase/register': typeof ShowcaseRegisterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/hackathon'
+    | '/mascot'
+    | '/n30'
+    | '/schedule'
+    | '/showcase'
+    | '/speakers'
+    | '/venue'
+    | '/hackathon/register'
+    | '/showcase/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/hackathon'
+    | '/mascot'
+    | '/n30'
+    | '/schedule'
+    | '/showcase'
+    | '/speakers'
+    | '/venue'
+    | '/hackathon/register'
+    | '/showcase/register'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/hackathon'
+    | '/mascot'
+    | '/n30'
+    | '/schedule'
+    | '/showcase'
+    | '/speakers'
+    | '/venue'
+    | '/hackathon/register'
+    | '/showcase/register'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  HackathonRoute: typeof HackathonRouteWithChildren
+  MascotRoute: typeof MascotRoute
+  N30Route: typeof N30Route
+  ScheduleRoute: typeof ScheduleRoute
+  ShowcaseRoute: typeof ShowcaseRouteWithChildren
+  SpeakersRoute: typeof SpeakersRoute
+  VenueRoute: typeof VenueRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/venue': {
+      id: '/venue'
+      path: '/venue'
+      fullPath: '/venue'
+      preLoaderRoute: typeof VenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/speakers': {
+      id: '/speakers'
+      path: '/speakers'
+      fullPath: '/speakers'
+      preLoaderRoute: typeof SpeakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/showcase': {
+      id: '/showcase'
+      path: '/showcase'
+      fullPath: '/showcase'
+      preLoaderRoute: typeof ShowcaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/n30': {
+      id: '/n30'
+      path: '/n30'
+      fullPath: '/n30'
+      preLoaderRoute: typeof N30RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mascot': {
+      id: '/mascot'
+      path: '/mascot'
+      fullPath: '/mascot'
+      preLoaderRoute: typeof MascotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hackathon': {
+      id: '/hackathon'
+      path: '/hackathon'
+      fullPath: '/hackathon'
+      preLoaderRoute: typeof HackathonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +236,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/showcase/register': {
+      id: '/showcase/register'
+      path: '/register'
+      fullPath: '/showcase/register'
+      preLoaderRoute: typeof ShowcaseRegisterRouteImport
+      parentRoute: typeof ShowcaseRoute
+    }
+    '/hackathon/register': {
+      id: '/hackathon/register'
+      path: '/register'
+      fullPath: '/hackathon/register'
+      preLoaderRoute: typeof HackathonRegisterRouteImport
+      parentRoute: typeof HackathonRoute
+    }
   }
 }
 
+interface HackathonRouteChildren {
+  HackathonRegisterRoute: typeof HackathonRegisterRoute
+}
+
+const HackathonRouteChildren: HackathonRouteChildren = {
+  HackathonRegisterRoute: HackathonRegisterRoute,
+}
+
+const HackathonRouteWithChildren = HackathonRoute._addFileChildren(
+  HackathonRouteChildren,
+)
+
+interface ShowcaseRouteChildren {
+  ShowcaseRegisterRoute: typeof ShowcaseRegisterRoute
+}
+
+const ShowcaseRouteChildren: ShowcaseRouteChildren = {
+  ShowcaseRegisterRoute: ShowcaseRegisterRoute,
+}
+
+const ShowcaseRouteWithChildren = ShowcaseRoute._addFileChildren(
+  ShowcaseRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  HackathonRoute: HackathonRouteWithChildren,
+  MascotRoute: MascotRoute,
+  N30Route: N30Route,
+  ScheduleRoute: ScheduleRoute,
+  ShowcaseRoute: ShowcaseRouteWithChildren,
+  SpeakersRoute: SpeakersRoute,
+  VenueRoute: VenueRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -205,8 +205,7 @@ function HighlightCard({
   const hover = tone === "red" ? "hover-red-glow" : "hover-blue-glow";
   return (
     <Link
-      // @ts-expect-error dynamic route string
-      to={to}
+      to={to as "/hackathon"}
       className={`block rounded-md border ${border} bg-black/70 p-5 ${hover}`}
     >
       <div className={`mb-3 ${color}`}>{icon}</div>
