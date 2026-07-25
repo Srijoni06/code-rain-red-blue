@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { SiteFrame } from "@/components/SiteFrame";
 import { GlitchTitle } from "@/components/GlitchTitle";
 import { PagePanel } from "@/components/PagePanel";
 import { RabbitIcon } from "@/components/motifs";
+import { CommunityLinks } from "@/components/CommunityLinks";
+import { ChevronLeft, ChevronRight, Quote, Image as ImageIcon } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -20,8 +23,17 @@ export const Route = createFileRoute("/contact")({
 
 type FormValues = { name: string; email: string; message: string };
 
+const TESTIMONIALS = [
+  { name: "Past Participant — TBA", role: "Role, Org", quote: "Testimonial from past participant — TBA." },
+  { name: "Past Participant — TBA", role: "Role, Org", quote: "Testimonial from past participant — TBA." },
+  { name: "Past Participant — TBA", role: "Role, Org", quote: "Testimonial from past participant — TBA." },
+];
+
 function ContactPage() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormValues>();
+  const [idx, setIdx] = useState(0);
+  const t = TESTIMONIALS[idx];
+
   const onSubmit = () => {
     toast.success("Message received. We'll reach you through the wire.");
     reset();
@@ -47,12 +59,8 @@ function ContactPage() {
             <ul className="mt-6 space-y-2 font-mono text-sm text-foreground/80">
               <li>&gt; email: contact@genaicoe.example</li>
               <li>&gt; phone: +91 · TBA</li>
-              <li className="flex gap-3 pt-2">
-                <a href="#" className="text-[var(--neon-blue)] hover:underline">X</a>
-                <a href="#" className="text-[var(--neon-blue)] hover:underline">LinkedIn</a>
-                <a href="#" className="text-[var(--neon-blue)] hover:underline">Instagram</a>
-              </li>
             </ul>
+            <div className="mt-4"><CommunityLinks /></div>
 
             <div className="mt-8 flex items-center gap-3 text-[var(--neon-green)]/70">
               <RabbitIcon className="h-6 w-6" />
@@ -86,6 +94,64 @@ function ContactPage() {
             </button>
           </form>
         </div>
+
+        <section className="mt-16">
+          <h2 className="font-display text-2xl font-black uppercase tracking-widest text-[var(--neon-red)]">
+            Testimonials
+          </h2>
+          <div
+            className="mt-6 rounded-md border border-[var(--neon-blue)]/50 bg-black/70 p-8"
+            style={{ boxShadow: "var(--glow-blue)" }}
+          >
+            <Quote className="h-8 w-8 text-[var(--neon-blue)]" />
+            <p className="mt-4 font-mono text-base italic text-foreground/90">
+              "{t.quote}"
+            </p>
+            <p className="mt-4 font-mono text-xs uppercase tracking-widest text-[var(--neon-red)]">
+              — {t.name} · {t.role}
+            </p>
+            <div className="mt-6 flex items-center gap-3">
+              <button
+                onClick={() => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+                className="grid h-8 w-8 place-items-center rounded border border-[var(--neon-red)]/60 text-[var(--neon-red)] hover-red-glow"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => setIdx((i) => (i + 1) % TESTIMONIALS.length)}
+                className="grid h-8 w-8 place-items-center rounded border border-[var(--neon-blue)]/60 text-[var(--neon-blue)] hover-blue-glow"
+                aria-label="Next"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                {idx + 1} / {TESTIMONIALS.length}
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <h2 className="font-display text-2xl font-black uppercase tracking-widest text-[var(--neon-blue)]">
+            Past Event Highlights
+          </h2>
+          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div
+                key={i}
+                className={`aspect-square grid place-items-center rounded-md border bg-black/60 ${
+                  i % 2 === 0 ? "border-[var(--neon-red)]/40" : "border-[var(--neon-blue)]/40"
+                }`}
+              >
+                <ImageIcon className={`h-8 w-8 ${i % 2 === 0 ? "text-[var(--neon-red)]/50" : "text-[var(--neon-blue)]/50"}`} />
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+            &gt; Gallery to be populated post-summit.
+          </p>
+        </section>
       </PagePanel>
     </SiteFrame>
   );

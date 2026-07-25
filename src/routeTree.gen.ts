@@ -10,11 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VenueRouteImport } from './routes/venue'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SpeakersRouteImport } from './routes/speakers'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as N30RouteImport } from './routes/n30'
 import { Route as MascotRouteImport } from './routes/mascot'
+import { Route as HighlightsRouteImport } from './routes/highlights'
 import { Route as HackathonRouteImport } from './routes/hackathon'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,6 +26,11 @@ import { Route as HackathonRegisterRouteImport } from './routes/hackathon.regist
 const VenueRoute = VenueRouteImport.update({
   id: '/venue',
   path: '/venue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SpeakersRoute = SpeakersRouteImport.update({
@@ -49,6 +56,11 @@ const N30Route = N30RouteImport.update({
 const MascotRoute = MascotRouteImport.update({
   id: '/mascot',
   path: '/mascot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HighlightsRoute = HighlightsRouteImport.update({
+  id: '/highlights',
+  path: '/highlights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HackathonRoute = HackathonRouteImport.update({
@@ -81,11 +93,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
+  '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
+  '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
@@ -94,11 +108,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
+  '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
+  '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
@@ -108,11 +124,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
+  '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
+  '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
@@ -123,11 +141,13 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/hackathon'
+    | '/highlights'
     | '/mascot'
     | '/n30'
     | '/schedule'
     | '/showcase'
     | '/speakers'
+    | '/sponsors'
     | '/venue'
     | '/hackathon/register'
     | '/showcase/register'
@@ -136,11 +156,13 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/hackathon'
+    | '/highlights'
     | '/mascot'
     | '/n30'
     | '/schedule'
     | '/showcase'
     | '/speakers'
+    | '/sponsors'
     | '/venue'
     | '/hackathon/register'
     | '/showcase/register'
@@ -149,11 +171,13 @@ export interface FileRouteTypes {
     | '/'
     | '/contact'
     | '/hackathon'
+    | '/highlights'
     | '/mascot'
     | '/n30'
     | '/schedule'
     | '/showcase'
     | '/speakers'
+    | '/sponsors'
     | '/venue'
     | '/hackathon/register'
     | '/showcase/register'
@@ -163,11 +187,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
   HackathonRoute: typeof HackathonRouteWithChildren
+  HighlightsRoute: typeof HighlightsRoute
   MascotRoute: typeof MascotRoute
   N30Route: typeof N30Route
   ScheduleRoute: typeof ScheduleRoute
   ShowcaseRoute: typeof ShowcaseRouteWithChildren
   SpeakersRoute: typeof SpeakersRoute
+  SponsorsRoute: typeof SponsorsRoute
   VenueRoute: typeof VenueRoute
 }
 
@@ -178,6 +204,13 @@ declare module '@tanstack/react-router' {
       path: '/venue'
       fullPath: '/venue'
       preLoaderRoute: typeof VenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/speakers': {
@@ -213,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/mascot'
       fullPath: '/mascot'
       preLoaderRoute: typeof MascotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/highlights': {
+      id: '/highlights'
+      path: '/highlights'
+      fullPath: '/highlights'
+      preLoaderRoute: typeof HighlightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hackathon': {
@@ -281,11 +321,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
   HackathonRoute: HackathonRouteWithChildren,
+  HighlightsRoute: HighlightsRoute,
   MascotRoute: MascotRoute,
   N30Route: N30Route,
   ScheduleRoute: ScheduleRoute,
   ShowcaseRoute: ShowcaseRouteWithChildren,
   SpeakersRoute: SpeakersRoute,
+  SponsorsRoute: SponsorsRoute,
   VenueRoute: VenueRoute,
 }
 export const routeTree = rootRouteImport
