@@ -5,8 +5,10 @@ import { EntryGate, useEntryGate } from "@/components/EntryGate";
 import { SiteFrame } from "@/components/SiteFrame";
 import { GlitchTitle } from "@/components/GlitchTitle";
 import { N30Mascot } from "@/components/N30Mascot";
-import { PagePanel } from "@/components/PagePanel";
 import { RabbitIcon } from "@/components/motifs";
+import { Countdown } from "@/components/Countdown";
+import { WelcomePopup } from "@/components/WelcomePopup";
+import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { Code2, Presentation, Users, CalendarDays, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -35,7 +37,7 @@ function HomeRoute() {
   const { entered, hydrated, enter } = useEntryGate();
   const [, setNonce] = useState(0);
 
-  if (!hydrated) return null; // avoid SSR/entry flash
+  if (!hydrated) return null;
   if (!entered) {
     return (
       <EntryGate
@@ -49,18 +51,23 @@ function HomeRoute() {
 
   return (
     <SiteFrame>
-      {/* Hero */}
-      <section className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 lg:px-8">
+      <WelcomePopup />
+      <ExitIntentPopup />
+
+      <section className="relative z-10 mx-auto max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8">
         <div className="page-panel rounded-md border border-border/60 p-6 sm:p-10 lg:p-14">
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
+            <div className="min-w-0">
               <span className="inline-block rounded border border-[var(--neon-blue)] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--neon-blue)]">
                 January 2027 · STPI, Sector V, Kolkata
               </span>
               <p className="mt-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                 &gt; Exact dates to be announced
               </p>
-              <GlitchTitle className="mt-6 text-5xl leading-none sm:text-7xl lg:text-8xl">
+
+              <Countdown targetIso={null} />
+
+              <GlitchTitle className="mt-8 text-5xl leading-none sm:text-7xl lg:text-8xl">
                 GenAI CoE Summit 2027
               </GlitchTitle>
               <p className="mt-6 max-w-2xl font-mono text-sm text-foreground/80 sm:text-base">
@@ -94,7 +101,6 @@ function HomeRoute() {
             <N30Mascot size="md" />
           </div>
 
-          {/* White rabbit motif */}
           <div className="mt-10 flex items-center gap-3 text-[var(--neon-green)]/70">
             <RabbitIcon className="h-6 w-6" />
             <p className="font-mono text-[11px] uppercase tracking-widest">
@@ -104,7 +110,6 @@ function HomeRoute() {
         </div>
       </section>
 
-      {/* About the Summit */}
       <Section title="About the Summit" accent="red">
         <p>
           The GenAI CoE Summit is a two-day gathering at STPI Sector V,
@@ -115,7 +120,6 @@ function HomeRoute() {
         </p>
       </Section>
 
-      {/* About CoE */}
       <Section title="About Gen AI CoE / IEM-UEM" accent="blue">
         <p>
           The Gen AI Center of Excellence at IEM-UEM is a research and
@@ -125,7 +129,6 @@ function HomeRoute() {
         </p>
       </Section>
 
-      {/* Highlights */}
       <section className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6">
         <div className="page-panel rounded-md border border-border/60 p-6 sm:p-10">
           <h2 className="mb-8 font-display text-2xl font-black uppercase tracking-widest text-[var(--neon-red)]">
@@ -140,7 +143,6 @@ function HomeRoute() {
         </div>
       </section>
 
-      {/* Venue teaser */}
       <section className="relative z-10 mx-auto max-w-7xl px-4 pb-16 sm:px-6">
         <div className="page-panel flex flex-col items-start gap-6 rounded-md border border-border/60 p-6 sm:flex-row sm:items-center sm:p-10">
           <div className="grid h-32 w-full place-items-center rounded border border-[var(--neon-blue)]/60 bg-gradient-to-br from-[#00b8ff22] to-transparent sm:w-64" style={{ boxShadow: "var(--glow-blue)" }}>
