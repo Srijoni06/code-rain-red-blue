@@ -9,63 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VenueRouteImport } from './routes/venue'
-import { Route as SponsorsRouteImport } from './routes/sponsors'
-import { Route as SpeakersRouteImport } from './routes/speakers'
-import { Route as ShowcaseRouteImport } from './routes/showcase'
-import { Route as ScheduleRouteImport } from './routes/schedule'
-import { Route as N30RouteImport } from './routes/n30'
-import { Route as MascotRouteImport } from './routes/mascot'
-import { Route as HighlightsRouteImport } from './routes/highlights'
-import { Route as HackathonRouteImport } from './routes/hackathon'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ShowcaseRegisterRouteImport } from './routes/showcase.register'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as HackathonRouteImport } from './routes/hackathon'
+import { Route as HighlightsRouteImport } from './routes/highlights'
+import { Route as MascotRouteImport } from './routes/mascot'
+import { Route as N30RouteImport } from './routes/n30'
+import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as ShowcaseRouteImport } from './routes/showcase'
+import { Route as SpeakersRouteImport } from './routes/speakers'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
+import { Route as VenueRouteImport } from './routes/venue'
 import { Route as HackathonRegisterRouteImport } from './routes/hackathon.register'
+import { Route as ShowcaseRegisterRouteImport } from './routes/showcase.register'
 
-const VenueRoute = VenueRouteImport.update({
-  id: '/venue',
-  path: '/venue',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SponsorsRoute = SponsorsRouteImport.update({
-  id: '/sponsors',
-  path: '/sponsors',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SpeakersRoute = SpeakersRouteImport.update({
-  id: '/speakers',
-  path: '/speakers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ShowcaseRoute = ShowcaseRouteImport.update({
-  id: '/showcase',
-  path: '/showcase',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ScheduleRoute = ScheduleRouteImport.update({
-  id: '/schedule',
-  path: '/schedule',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const N30Route = N30RouteImport.update({
-  id: '/n30',
-  path: '/n30',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MascotRoute = MascotRouteImport.update({
-  id: '/mascot',
-  path: '/mascot',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HighlightsRoute = HighlightsRouteImport.update({
-  id: '/highlights',
-  path: '/highlights',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HackathonRoute = HackathonRouteImport.update({
-  id: '/hackathon',
-  path: '/hackathon',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -73,20 +33,60 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const HackathonRoute = HackathonRouteImport.update({
+  id: '/hackathon',
+  path: '/hackathon',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ShowcaseRegisterRoute = ShowcaseRegisterRouteImport.update({
-  id: '/register',
-  path: '/register',
-  getParentRoute: () => ShowcaseRoute,
+const HighlightsRoute = HighlightsRouteImport.update({
+  id: '/highlights',
+  path: '/highlights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MascotRoute = MascotRouteImport.update({
+  id: '/mascot',
+  path: '/mascot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const N30Route = N30RouteImport.update({
+  id: '/n30',
+  path: '/n30',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShowcaseRoute = ShowcaseRouteImport.update({
+  id: '/showcase',
+  path: '/showcase',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpeakersRoute = SpeakersRouteImport.update({
+  id: '/speakers',
+  path: '/speakers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VenueRoute = VenueRouteImport.update({
+  id: '/venue',
+  path: '/venue',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const HackathonRegisterRoute = HackathonRegisterRouteImport.update({
   id: '/register',
   path: '/register',
   getParentRoute: () => HackathonRoute,
+} as any)
+const ShowcaseRegisterRoute = ShowcaseRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => ShowcaseRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -199,67 +199,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/venue': {
-      id: '/venue'
-      path: '/venue'
-      fullPath: '/venue'
-      preLoaderRoute: typeof VenueRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sponsors': {
-      id: '/sponsors'
-      path: '/sponsors'
-      fullPath: '/sponsors'
-      preLoaderRoute: typeof SponsorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/speakers': {
-      id: '/speakers'
-      path: '/speakers'
-      fullPath: '/speakers'
-      preLoaderRoute: typeof SpeakersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/showcase': {
-      id: '/showcase'
-      path: '/showcase'
-      fullPath: '/showcase'
-      preLoaderRoute: typeof ShowcaseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/schedule': {
-      id: '/schedule'
-      path: '/schedule'
-      fullPath: '/schedule'
-      preLoaderRoute: typeof ScheduleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/n30': {
-      id: '/n30'
-      path: '/n30'
-      fullPath: '/n30'
-      preLoaderRoute: typeof N30RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mascot': {
-      id: '/mascot'
-      path: '/mascot'
-      fullPath: '/mascot'
-      preLoaderRoute: typeof MascotRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/highlights': {
-      id: '/highlights'
-      path: '/highlights'
-      fullPath: '/highlights'
-      preLoaderRoute: typeof HighlightsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hackathon': {
-      id: '/hackathon'
-      path: '/hackathon'
-      fullPath: '/hackathon'
-      preLoaderRoute: typeof HackathonRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -269,19 +213,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/hackathon': {
+      id: '/hackathon'
+      path: '/hackathon'
+      fullPath: '/hackathon'
+      preLoaderRoute: typeof HackathonRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/showcase/register': {
-      id: '/showcase/register'
-      path: '/register'
-      fullPath: '/showcase/register'
-      preLoaderRoute: typeof ShowcaseRegisterRouteImport
-      parentRoute: typeof ShowcaseRoute
+    '/highlights': {
+      id: '/highlights'
+      path: '/highlights'
+      fullPath: '/highlights'
+      preLoaderRoute: typeof HighlightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mascot': {
+      id: '/mascot'
+      path: '/mascot'
+      fullPath: '/mascot'
+      preLoaderRoute: typeof MascotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/n30': {
+      id: '/n30'
+      path: '/n30'
+      fullPath: '/n30'
+      preLoaderRoute: typeof N30RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/showcase': {
+      id: '/showcase'
+      path: '/showcase'
+      fullPath: '/showcase'
+      preLoaderRoute: typeof ShowcaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/speakers': {
+      id: '/speakers'
+      path: '/speakers'
+      fullPath: '/speakers'
+      preLoaderRoute: typeof SpeakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/venue': {
+      id: '/venue'
+      path: '/venue'
+      fullPath: '/venue'
+      preLoaderRoute: typeof VenueRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/hackathon/register': {
       id: '/hackathon/register'
@@ -289,6 +282,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/hackathon/register'
       preLoaderRoute: typeof HackathonRegisterRouteImport
       parentRoute: typeof HackathonRoute
+    }
+    '/showcase/register': {
+      id: '/showcase/register'
+      path: '/register'
+      fullPath: '/showcase/register'
+      preLoaderRoute: typeof ShowcaseRegisterRouteImport
+      parentRoute: typeof ShowcaseRoute
     }
   }
 }
@@ -333,3 +333,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
