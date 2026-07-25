@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import n30Asset from "@/assets/n30.png.asset.json";
+import n30Asset from "@/assets/n30.png";
 import { cn } from "@/lib/utils";
 
 const LINES = [
@@ -93,7 +93,7 @@ export function N30Mascot({
         style={{ transform: `rotate(${tilt}deg)`, transition: "transform 200ms ease-out" }}
       >
         <img
-          src={n30Asset.url}
+          src={n30Asset}
           alt="N30 — GenAI CoE Summit mascot"
           width={512}
           height={768}
