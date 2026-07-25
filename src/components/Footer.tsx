@@ -1,18 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import { QrBlock } from "./QrBlock";
+import { CommunityLinks } from "./CommunityLinks";
+import logoAsset from "@/assets/genai-coe-logo.png.asset.json";
 
 export function Footer() {
   return (
     <footer className="relative z-10 border-t border-[var(--neon-red)]/30 bg-black/90">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div>
-          <div
-            aria-label="Gen AI CoE logo"
-            className="mb-3 grid h-14 w-14 place-items-center rounded border border-[var(--neon-blue)]/60 bg-black font-display text-xs font-bold uppercase text-[var(--neon-blue)]"
-            style={{ boxShadow: "var(--glow-blue)" }}
-          >
-            CoE
-          </div>
+          <img
+            src={logoAsset.url}
+            alt="Gen AI Center of Excellence — IEM"
+            className="mb-4 h-20 w-auto object-contain"
+          />
           <p className="font-mono text-xs text-muted-foreground">
             GenAI CoE Summit 2027
             <br />
@@ -28,6 +28,8 @@ export function Footer() {
             <li><Link to="/showcase" className="hover:text-[var(--neon-blue)]">Project Showcase</Link></li>
             <li><Link to="/schedule" className="hover:text-[var(--neon-blue)]">Schedule</Link></li>
             <li><Link to="/speakers" className="hover:text-[var(--neon-blue)]">Speakers</Link></li>
+            <li><Link to="/sponsors" className="hover:text-[var(--neon-blue)]">Sponsors</Link></li>
+            <li><Link to="/highlights" className="hover:text-[var(--neon-blue)]">Highlights</Link></li>
             <li><Link to="/n30" className="hover:text-[var(--neon-blue)]">Meet N30</Link></li>
           </ul>
         </div>
@@ -36,14 +38,12 @@ export function Footer() {
             Contact
           </h4>
           <ul className="space-y-2 font-mono text-xs text-foreground/80">
-            <li>email@genaicoe.example</li>
+            <li>contact@genaicoe.example</li>
             <li>+91 · TBA</li>
-            <li className="flex gap-3 pt-2">
-              <a href="#" className="hover:text-[var(--neon-red)]">X</a>
-              <a href="#" className="hover:text-[var(--neon-red)]">LinkedIn</a>
-              <a href="#" className="hover:text-[var(--neon-red)]">Instagram</a>
-            </li>
           </ul>
+          <div className="mt-4">
+            <CommunityLinks />
+          </div>
         </div>
         <div className="flex flex-col items-start gap-2">
           <h4 className="font-display text-sm uppercase tracking-widest text-[var(--neon-red)]">
