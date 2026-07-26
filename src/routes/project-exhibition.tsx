@@ -1,4 +1,4 @@
-import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteFrame } from "@/components/SiteFrame";
 import { GlitchTitle } from "@/components/GlitchTitle";
 import { PagePanel } from "@/components/PagePanel";
@@ -12,15 +12,8 @@ export const Route = createFileRoute("/project-exhibition")({
       { property: "og:description", content: "Showcase your project across both days of the Summit." },
     ],
   }),
-  component: ExhibitionLayout,
+  component: ExhibitionPage,
 });
-
-function ExhibitionLayout() {
-  const matches = useMatches();
-  const isChild = matches.some((m) => m.routeId === "/project-exhibition/register");
-  if (isChild) return <Outlet />;
-  return <ExhibitionPage />;
-}
 
 function ExhibitionPage() {
   return (
