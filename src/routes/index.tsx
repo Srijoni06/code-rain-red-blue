@@ -65,7 +65,7 @@ function HomeRoute() {
                 &gt; Exact dates to be announced
               </p>
 
-              <Countdown targetIso={null} />
+              <Countdown targetIso="2027-01-01T00:00:00" />
 
               <GlitchTitle className="mt-8 text-5xl leading-none sm:text-7xl lg:text-8xl">
                 GenAI CoE Summit 2027

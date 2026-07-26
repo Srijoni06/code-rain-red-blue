@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CodeRain } from "@/components/CodeRain";
 import { N30Mascot } from "@/components/N30Mascot";
 import { Toaster } from "@/components/ui/sonner";
+import { N30Chat } from "@/components/N30Chat";
 
 function NotFoundComponent() {
   return (
@@ -133,6 +134,7 @@ function RootComponent() {
       <CodeRain />
       <div className="scanlines" aria-hidden="true" />
       <Outlet />
+      <N30Chat />
       <Toaster
         theme="dark"
         toastOptions={{
