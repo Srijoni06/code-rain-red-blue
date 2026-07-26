@@ -80,7 +80,7 @@ export function CodeRain() {
         position: "fixed",
         inset: 0,
         zIndex: 0,
-        opacity: 0.13,
+        opacity: 0.4,
         pointerEvents: "none",
       }}
     />
