@@ -26,6 +26,7 @@ export function Footer() {
           <ul className="space-y-2 font-mono text-xs text-foreground/80">
             <li><Link to="/hackathon" className="hover:text-[var(--neon-blue)]">Hackathon</Link></li>
             <li><Link to="/showcase" className="hover:text-[var(--neon-blue)]">Project Showcase</Link></li>
+            <li><Link to="/project-exhibition" className="hover:text-[var(--neon-blue)]">Project Exhibition</Link></li>
             <li><Link to="/schedule" className="hover:text-[var(--neon-blue)]">Schedule</Link></li>
             <li><Link to="/speakers" className="hover:text-[var(--neon-blue)]">Speakers</Link></li>
             <li><Link to="/sponsors" className="hover:text-[var(--neon-blue)]">Sponsors</Link></li>
