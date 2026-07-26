@@ -39,7 +39,7 @@ export function CodeRain() {
       if (now - last < interval) return;
       last = now;
 
-      ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
       ctx.fillRect(0, 0, width, height);
 
       ctx.font = `${fontSize}px 'JetBrains Mono', monospace`;
@@ -48,7 +48,14 @@ export function CodeRain() {
         // Alternate red / blue columns for RGB feel; occasional green highlight
         const hue = i % 2 === 0 ? "#ff003c" : "#00b8ff";
         const rand = Math.random();
-        ctx.fillStyle = rand > 0.985 ? "#00ff9c" : hue;
+        const isGreen = rand > 0.97;
+        ctx.fillStyle = isGreen ? "#00ff41" : hue;
+        if (isGreen) {
+          ctx.shadowColor = "#00ff41";
+          ctx.shadowBlur = 8;
+        } else {
+          ctx.shadowBlur = 0;
+        }
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         if (drops[i] * fontSize > height && Math.random() > 0.975) {
           drops[i] = 0;
