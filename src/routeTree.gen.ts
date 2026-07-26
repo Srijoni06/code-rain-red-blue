@@ -14,6 +14,7 @@ import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SpeakersRouteImport } from './routes/speakers'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as ProjectExhibitionRouteImport } from './routes/project-exhibition'
 import { Route as N30RouteImport } from './routes/n30'
 import { Route as MascotRouteImport } from './routes/mascot'
 import { Route as HighlightsRouteImport } from './routes/highlights'
@@ -47,6 +48,11 @@ const ShowcaseRoute = ShowcaseRouteImport.update({
 const ScheduleRoute = ScheduleRouteImport.update({
   id: '/schedule',
   path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectExhibitionRoute = ProjectExhibitionRouteImport.update({
+  id: '/project-exhibition',
+  path: '/project-exhibition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const N30Route = N30RouteImport.update({
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
+  '/project-exhibition': typeof ProjectExhibitionRoute
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
+  '/project-exhibition': typeof ProjectExhibitionRoute
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
+  '/project-exhibition': typeof ProjectExhibitionRoute
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/highlights'
     | '/mascot'
     | '/n30'
+    | '/project-exhibition'
     | '/schedule'
     | '/showcase'
     | '/speakers'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/highlights'
     | '/mascot'
     | '/n30'
+    | '/project-exhibition'
     | '/schedule'
     | '/showcase'
     | '/speakers'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/highlights'
     | '/mascot'
     | '/n30'
+    | '/project-exhibition'
     | '/schedule'
     | '/showcase'
     | '/speakers'
@@ -202,6 +214,7 @@ export interface RootRouteChildren {
   HighlightsRoute: typeof HighlightsRoute
   MascotRoute: typeof MascotRoute
   N30Route: typeof N30Route
+  ProjectExhibitionRoute: typeof ProjectExhibitionRoute
   ScheduleRoute: typeof ScheduleRoute
   ShowcaseRoute: typeof ShowcaseRouteWithChildren
   SpeakersRoute: typeof SpeakersRoute
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       path: '/schedule'
       fullPath: '/schedule'
       preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/project-exhibition': {
+      id: '/project-exhibition'
+      path: '/project-exhibition'
+      fullPath: '/project-exhibition'
+      preLoaderRoute: typeof ProjectExhibitionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/n30': {
@@ -344,6 +364,7 @@ const rootRouteChildren: RootRouteChildren = {
   HighlightsRoute: HighlightsRoute,
   MascotRoute: MascotRoute,
   N30Route: N30Route,
+  ProjectExhibitionRoute: ProjectExhibitionRoute,
   ScheduleRoute: ScheduleRoute,
   ShowcaseRoute: ShowcaseRouteWithChildren,
   SpeakersRoute: SpeakersRoute,
