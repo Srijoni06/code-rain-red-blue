@@ -14,6 +14,7 @@ import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SpeakersRouteImport } from './routes/speakers'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ScheduleRouteImport } from './routes/schedule'
+import { Route as ProjectExhibitionRouteImport } from './routes/project-exhibition'
 import { Route as N30RouteImport } from './routes/n30'
 import { Route as MascotRouteImport } from './routes/mascot'
 import { Route as HighlightsRouteImport } from './routes/highlights'
@@ -21,6 +22,7 @@ import { Route as HackathonRouteImport } from './routes/hackathon'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShowcaseRegisterRouteImport } from './routes/showcase.register'
+import { Route as ProjectExhibitionRegisterRouteImport } from './routes/project-exhibition.register'
 import { Route as HackathonRegisterRouteImport } from './routes/hackathon.register'
 import { Route as ApiN30ChatRouteImport } from './routes/api/n30-chat'
 
@@ -47,6 +49,11 @@ const ShowcaseRoute = ShowcaseRouteImport.update({
 const ScheduleRoute = ScheduleRouteImport.update({
   id: '/schedule',
   path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectExhibitionRoute = ProjectExhibitionRouteImport.update({
+  id: '/project-exhibition',
+  path: '/project-exhibition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const N30Route = N30RouteImport.update({
@@ -84,6 +91,12 @@ const ShowcaseRegisterRoute = ShowcaseRegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => ShowcaseRoute,
 } as any)
+const ProjectExhibitionRegisterRoute =
+  ProjectExhibitionRegisterRouteImport.update({
+    id: '/register',
+    path: '/register',
+    getParentRoute: () => ProjectExhibitionRoute,
+  } as any)
 const HackathonRegisterRoute = HackathonRegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -102,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
+  '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
@@ -109,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/venue': typeof VenueRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
+  '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
 }
 export interface FileRoutesByTo {
@@ -118,6 +133,7 @@ export interface FileRoutesByTo {
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
+  '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
@@ -125,6 +141,7 @@ export interface FileRoutesByTo {
   '/venue': typeof VenueRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
+  '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
 }
 export interface FileRoutesById {
@@ -135,6 +152,7 @@ export interface FileRoutesById {
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
   '/n30': typeof N30Route
+  '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
   '/speakers': typeof SpeakersRoute
@@ -142,6 +160,7 @@ export interface FileRoutesById {
   '/venue': typeof VenueRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
+  '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
 }
 export interface FileRouteTypes {
@@ -153,6 +172,7 @@ export interface FileRouteTypes {
     | '/highlights'
     | '/mascot'
     | '/n30'
+    | '/project-exhibition'
     | '/schedule'
     | '/showcase'
     | '/speakers'
@@ -160,6 +180,7 @@ export interface FileRouteTypes {
     | '/venue'
     | '/api/n30-chat'
     | '/hackathon/register'
+    | '/project-exhibition/register'
     | '/showcase/register'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -169,6 +190,7 @@ export interface FileRouteTypes {
     | '/highlights'
     | '/mascot'
     | '/n30'
+    | '/project-exhibition'
     | '/schedule'
     | '/showcase'
     | '/speakers'
@@ -176,6 +198,7 @@ export interface FileRouteTypes {
     | '/venue'
     | '/api/n30-chat'
     | '/hackathon/register'
+    | '/project-exhibition/register'
     | '/showcase/register'
   id:
     | '__root__'
@@ -185,6 +208,7 @@ export interface FileRouteTypes {
     | '/highlights'
     | '/mascot'
     | '/n30'
+    | '/project-exhibition'
     | '/schedule'
     | '/showcase'
     | '/speakers'
@@ -192,6 +216,7 @@ export interface FileRouteTypes {
     | '/venue'
     | '/api/n30-chat'
     | '/hackathon/register'
+    | '/project-exhibition/register'
     | '/showcase/register'
   fileRoutesById: FileRoutesById
 }
@@ -202,6 +227,7 @@ export interface RootRouteChildren {
   HighlightsRoute: typeof HighlightsRoute
   MascotRoute: typeof MascotRoute
   N30Route: typeof N30Route
+  ProjectExhibitionRoute: typeof ProjectExhibitionRouteWithChildren
   ScheduleRoute: typeof ScheduleRoute
   ShowcaseRoute: typeof ShowcaseRouteWithChildren
   SpeakersRoute: typeof SpeakersRoute
@@ -245,6 +271,13 @@ declare module '@tanstack/react-router' {
       path: '/schedule'
       fullPath: '/schedule'
       preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/project-exhibition': {
+      id: '/project-exhibition'
+      path: '/project-exhibition'
+      fullPath: '/project-exhibition'
+      preLoaderRoute: typeof ProjectExhibitionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/n30': {
@@ -296,6 +329,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShowcaseRegisterRouteImport
       parentRoute: typeof ShowcaseRoute
     }
+    '/project-exhibition/register': {
+      id: '/project-exhibition/register'
+      path: '/register'
+      fullPath: '/project-exhibition/register'
+      preLoaderRoute: typeof ProjectExhibitionRegisterRouteImport
+      parentRoute: typeof ProjectExhibitionRoute
+    }
     '/hackathon/register': {
       id: '/hackathon/register'
       path: '/register'
@@ -325,6 +365,17 @@ const HackathonRouteWithChildren = HackathonRoute._addFileChildren(
   HackathonRouteChildren,
 )
 
+interface ProjectExhibitionRouteChildren {
+  ProjectExhibitionRegisterRoute: typeof ProjectExhibitionRegisterRoute
+}
+
+const ProjectExhibitionRouteChildren: ProjectExhibitionRouteChildren = {
+  ProjectExhibitionRegisterRoute: ProjectExhibitionRegisterRoute,
+}
+
+const ProjectExhibitionRouteWithChildren =
+  ProjectExhibitionRoute._addFileChildren(ProjectExhibitionRouteChildren)
+
 interface ShowcaseRouteChildren {
   ShowcaseRegisterRoute: typeof ShowcaseRegisterRoute
 }
@@ -344,6 +395,7 @@ const rootRouteChildren: RootRouteChildren = {
   HighlightsRoute: HighlightsRoute,
   MascotRoute: MascotRoute,
   N30Route: N30Route,
+  ProjectExhibitionRoute: ProjectExhibitionRouteWithChildren,
   ScheduleRoute: ScheduleRoute,
   ShowcaseRoute: ShowcaseRouteWithChildren,
   SpeakersRoute: SpeakersRoute,
