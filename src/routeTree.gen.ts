@@ -22,6 +22,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShowcaseRegisterRouteImport } from './routes/showcase.register'
 import { Route as HackathonRegisterRouteImport } from './routes/hackathon.register'
+import { Route as ApiN30ChatRouteImport } from './routes/api/n30-chat'
 
 const VenueRoute = VenueRouteImport.update({
   id: '/venue',
@@ -88,6 +89,11 @@ const HackathonRegisterRoute = HackathonRegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => HackathonRoute,
 } as any)
+const ApiN30ChatRoute = ApiN30ChatRouteImport.update({
+  id: '/api/n30-chat',
+  path: '/api/n30-chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
 }
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
 }
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
 }
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/api/n30-chat'
     | '/hackathon/register'
     | '/showcase/register'
   fileRoutesByTo: FileRoutesByTo
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/api/n30-chat'
     | '/hackathon/register'
     | '/showcase/register'
   id:
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/api/n30-chat'
     | '/hackathon/register'
     | '/showcase/register'
   fileRoutesById: FileRoutesById
@@ -195,6 +207,7 @@ export interface RootRouteChildren {
   SpeakersRoute: typeof SpeakersRoute
   SponsorsRoute: typeof SponsorsRoute
   VenueRoute: typeof VenueRoute
+  ApiN30ChatRoute: typeof ApiN30ChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -290,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HackathonRegisterRouteImport
       parentRoute: typeof HackathonRoute
     }
+    '/api/n30-chat': {
+      id: '/api/n30-chat'
+      path: '/api/n30-chat'
+      fullPath: '/api/n30-chat'
+      preLoaderRoute: typeof ApiN30ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -329,6 +349,7 @@ const rootRouteChildren: RootRouteChildren = {
   SpeakersRoute: SpeakersRoute,
   SponsorsRoute: SponsorsRoute,
   VenueRoute: VenueRoute,
+  ApiN30ChatRoute: ApiN30ChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
