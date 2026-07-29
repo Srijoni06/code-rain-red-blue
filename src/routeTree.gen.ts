@@ -9,9 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkshopsRouteImport } from './routes/workshops'
 import { Route as VenueRouteImport } from './routes/venue'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SpeakersRouteImport } from './routes/speakers'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as ProjectExhibitionRouteImport } from './routes/project-exhibition'
@@ -32,6 +34,11 @@ import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 
+const WorkshopsRoute = WorkshopsRouteImport.update({
+  id: '/workshops',
+  path: '/workshops',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VenueRoute = VenueRouteImport.update({
   id: '/venue',
   path: '/venue',
@@ -45,6 +52,11 @@ const SponsorsRoute = SponsorsRouteImport.update({
 const SpeakersRoute = SpeakersRouteImport.update({
   id: '/speakers',
   path: '/speakers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShowcaseRoute = ShowcaseRouteImport.update({
@@ -159,9 +171,11 @@ export interface FileRoutesByFullPath {
   '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/workshops': typeof WorkshopsRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
@@ -183,9 +197,11 @@ export interface FileRoutesByTo {
   '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/workshops': typeof WorkshopsRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
@@ -208,9 +224,11 @@ export interface FileRoutesById {
   '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
   '/showcase': typeof ShowcaseRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/workshops': typeof WorkshopsRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
@@ -234,9 +252,11 @@ export interface FileRouteTypes {
     | '/project-exhibition'
     | '/schedule'
     | '/showcase'
+    | '/sitemap.xml'
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/workshops'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/api/n30-chat'
@@ -258,9 +278,11 @@ export interface FileRouteTypes {
     | '/project-exhibition'
     | '/schedule'
     | '/showcase'
+    | '/sitemap.xml'
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/workshops'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/api/n30-chat'
@@ -282,9 +304,11 @@ export interface FileRouteTypes {
     | '/project-exhibition'
     | '/schedule'
     | '/showcase'
+    | '/sitemap.xml'
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/workshops'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/api/n30-chat'
@@ -307,9 +331,11 @@ export interface RootRouteChildren {
   ProjectExhibitionRoute: typeof ProjectExhibitionRouteWithChildren
   ScheduleRoute: typeof ScheduleRoute
   ShowcaseRoute: typeof ShowcaseRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpeakersRoute: typeof SpeakersRoute
   SponsorsRoute: typeof SponsorsRoute
   VenueRoute: typeof VenueRoute
+  WorkshopsRoute: typeof WorkshopsRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ApiN30ChatRoute: typeof ApiN30ChatRoute
@@ -319,6 +345,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/workshops': {
+      id: '/workshops'
+      path: '/workshops'
+      fullPath: '/workshops'
+      preLoaderRoute: typeof WorkshopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/venue': {
       id: '/venue'
       path: '/venue'
@@ -338,6 +371,13 @@ declare module '@tanstack/react-router' {
       path: '/speakers'
       fullPath: '/speakers'
       preLoaderRoute: typeof SpeakersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/showcase': {
@@ -523,9 +563,11 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectExhibitionRoute: ProjectExhibitionRouteWithChildren,
   ScheduleRoute: ScheduleRoute,
   ShowcaseRoute: ShowcaseRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpeakersRoute: SpeakersRoute,
   SponsorsRoute: SponsorsRoute,
   VenueRoute: VenueRoute,
+  WorkshopsRoute: WorkshopsRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,

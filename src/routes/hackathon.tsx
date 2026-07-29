@@ -218,18 +218,14 @@ function HackathonPage() {
             <ScrollText className="h-6 w-6" /> FAQ
           </h2>
           <Accordion type="single" collapsible className="mt-4">
-            {[
-              ["Who can participate?", "Students, professionals, and independent builders. Team size and eligibility details TBA."],
-              ["Is there a registration fee?", "Fee structure will be announced with the registration launch."],
-              ["Do I need a team to register?", "You can register as a team or as an individual looking for a team."],
-              ["Where and when?", "STPI, Sector V, Kolkata · January 2027. Exact dates TBA."],
-            ].map(([q, a]) => (
+            {FAQ.map(([q, a]) => (
               <AccordionItem key={q} value={q} className="border-border/50">
                 <AccordionTrigger className="font-mono text-sm text-foreground/90">{q}</AccordionTrigger>
                 <AccordionContent className="font-mono text-sm text-foreground/70">{a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+
         </div>
       </PagePanel>
 
