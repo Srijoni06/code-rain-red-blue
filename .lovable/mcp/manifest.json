@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "sdk_version": "0.25.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://jjysvmsiksawzhkhqkkm.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "genai-coe-summit-mcp",
+      "version": "0.1.0",
+      "title": "GenAI CoE Summit 2027"
+    },
+    "tools": [
+      {
+        "name": "get_summit_info",
+        "title": "Get Summit info",
+        "description": "Return top-level details about the GenAI CoE Summit 2027 — venue, organizer, dates, tracks, and registration pages.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_registration_links",
+        "title": "List registration links",
+        "description": "List the Summit's registration paths (hackathon, showcase attendee, project exhibition).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

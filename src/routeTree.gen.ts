@@ -16,15 +16,21 @@ import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as ProjectExhibitionRouteImport } from './routes/project-exhibition'
 import { Route as N30RouteImport } from './routes/n30'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MascotRouteImport } from './routes/mascot'
 import { Route as HighlightsRouteImport } from './routes/highlights'
 import { Route as HackathonRouteImport } from './routes/hackathon'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShowcaseRegisterRouteImport } from './routes/showcase.register'
 import { Route as ProjectExhibitionRegisterRouteImport } from './routes/project-exhibition.register'
 import { Route as HackathonRegisterRouteImport } from './routes/hackathon.register'
 import { Route as ApiN30ChatRouteImport } from './routes/api/n30-chat'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 
 const VenueRoute = VenueRouteImport.update({
   id: '/venue',
@@ -61,6 +67,11 @@ const N30Route = N30RouteImport.update({
   path: '/n30',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MascotRoute = MascotRouteImport.update({
   id: '/mascot',
   path: '/mascot',
@@ -79,6 +90,11 @@ const HackathonRoute = HackathonRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -107,13 +123,38 @@ const ApiN30ChatRoute = ApiN30ChatRouteImport.update({
   path: '/api/n30-chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
+  id: '/.lovable/oauth/consent',
+  path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
+  '/mcp': typeof McpRoute
   '/n30': typeof N30Route
   '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
@@ -121,17 +162,23 @@ export interface FileRoutesByFullPath {
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
+  '/mcp': typeof McpRoute
   '/n30': typeof N30Route
   '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
@@ -139,18 +186,24 @@ export interface FileRoutesByTo {
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
   '/highlights': typeof HighlightsRoute
   '/mascot': typeof MascotRoute
+  '/mcp': typeof McpRoute
   '/n30': typeof N30Route
   '/project-exhibition': typeof ProjectExhibitionRouteWithChildren
   '/schedule': typeof ScheduleRoute
@@ -158,19 +211,25 @@ export interface FileRoutesById {
   '/speakers': typeof SpeakersRoute
   '/sponsors': typeof SponsorsRoute
   '/venue': typeof VenueRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/n30-chat': typeof ApiN30ChatRoute
   '/hackathon/register': typeof HackathonRegisterRoute
   '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/contact'
     | '/hackathon'
     | '/highlights'
     | '/mascot'
+    | '/mcp'
     | '/n30'
     | '/project-exhibition'
     | '/schedule'
@@ -178,17 +237,23 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/api/n30-chat'
     | '/hackathon/register'
     | '/project-exhibition/register'
     | '/showcase/register'
+    | '/.lovable/oauth/consent'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/contact'
     | '/hackathon'
     | '/highlights'
     | '/mascot'
+    | '/mcp'
     | '/n30'
     | '/project-exhibition'
     | '/schedule'
@@ -196,17 +261,23 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/api/n30-chat'
     | '/hackathon/register'
     | '/project-exhibition/register'
     | '/showcase/register'
+    | '/.lovable/oauth/consent'
+    | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
+    | '/auth'
     | '/contact'
     | '/hackathon'
     | '/highlights'
     | '/mascot'
+    | '/mcp'
     | '/n30'
     | '/project-exhibition'
     | '/schedule'
@@ -214,18 +285,24 @@ export interface FileRouteTypes {
     | '/speakers'
     | '/sponsors'
     | '/venue'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/api/n30-chat'
     | '/hackathon/register'
     | '/project-exhibition/register'
     | '/showcase/register'
+    | '/.lovable/oauth/consent'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   HackathonRoute: typeof HackathonRouteWithChildren
   HighlightsRoute: typeof HighlightsRoute
   MascotRoute: typeof MascotRoute
+  McpRoute: typeof McpRoute
   N30Route: typeof N30Route
   ProjectExhibitionRoute: typeof ProjectExhibitionRouteWithChildren
   ScheduleRoute: typeof ScheduleRoute
@@ -233,7 +310,11 @@ export interface RootRouteChildren {
   SpeakersRoute: typeof SpeakersRoute
   SponsorsRoute: typeof SponsorsRoute
   VenueRoute: typeof VenueRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ApiN30ChatRoute: typeof ApiN30ChatRoute
+  DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -287,6 +368,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof N30RouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mascot': {
       id: '/mascot'
       path: '/mascot'
@@ -313,6 +401,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -348,6 +443,34 @@ declare module '@tanstack/react-router' {
       path: '/api/n30-chat'
       fullPath: '/api/n30-chat'
       preLoaderRoute: typeof ApiN30ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.lovable/oauth/consent': {
+      id: '/.lovable/oauth/consent'
+      path: '/.lovable/oauth/consent'
+      fullPath: '/.lovable/oauth/consent'
+      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -390,10 +513,12 @@ const ShowcaseRouteWithChildren = ShowcaseRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   HackathonRoute: HackathonRouteWithChildren,
   HighlightsRoute: HighlightsRoute,
   MascotRoute: MascotRoute,
+  McpRoute: McpRoute,
   N30Route: N30Route,
   ProjectExhibitionRoute: ProjectExhibitionRouteWithChildren,
   ScheduleRoute: ScheduleRoute,
@@ -401,7 +526,12 @@ const rootRouteChildren: RootRouteChildren = {
   SpeakersRoute: SpeakersRoute,
   SponsorsRoute: SponsorsRoute,
   VenueRoute: VenueRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ApiN30ChatRoute: ApiN30ChatRoute,
+  DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
