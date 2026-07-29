@@ -10,6 +10,29 @@ export const Route = createFileRoute("/venue")({
       { name: "description", content: "STPI, Sector V, Salt Lake, Kolkata — venue for the GenAI CoE Summit 2027." },
       { property: "og:title", content: "Venue — STPI Sector V, Kolkata" },
       { property: "og:description", content: "Right in the middle of Kolkata's tech corridor." },
+      { property: "og:url", content: "https://code-rain-red-blue.lovable.app/venue" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://code-rain-red-blue.lovable.app/venue" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "STPI, Sector V, Kolkata",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Block GP, Sector V, Salt Lake",
+            addressLocality: "Kolkata",
+            addressRegion: "West Bengal",
+            postalCode: "700091",
+            addressCountry: "IN",
+          },
+          url: "https://code-rain-red-blue.lovable.app/venue",
+        }),
+      },
     ],
   }),
   component: VenuePage,
