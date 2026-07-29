@@ -10,6 +10,29 @@ export const Route = createFileRoute("/venue")({
       { name: "description", content: "STPI, Sector V, Salt Lake, Kolkata — venue for the GenAI CoE Summit 2027." },
       { property: "og:title", content: "Venue — STPI Sector V, Kolkata" },
       { property: "og:description", content: "Right in the middle of Kolkata's tech corridor." },
+      { property: "og:url", content: "https://code-rain-red-blue.lovable.app/venue" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://code-rain-red-blue.lovable.app/venue" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "STPI, Sector V, Kolkata",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Block GP, Sector V, Salt Lake",
+            addressLocality: "Kolkata",
+            addressRegion: "West Bengal",
+            postalCode: "700091",
+            addressCountry: "IN",
+          },
+          url: "https://code-rain-red-blue.lovable.app/venue",
+        }),
+      },
     ],
   }),
   component: VenuePage,
@@ -36,9 +59,10 @@ function VenuePage() {
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           <div className="rounded-md border border-[var(--neon-red)]/60 bg-black/70 p-6">
-            <h3 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-red)]">
+            <h2 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-red)]">
               Address
-            </h3>
+            </h2>
+
             <p className="mt-3 font-mono text-sm text-foreground/80">
               STPI (Software Technology Parks of India)
               <br />
@@ -48,9 +72,10 @@ function VenuePage() {
             </p>
           </div>
           <div className="rounded-md border border-[var(--neon-blue)]/60 bg-black/70 p-6">
-            <h3 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-blue)]">
+            <h2 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-blue)]">
               Getting there
-            </h3>
+            </h2>
+
             <p className="mt-3 font-mono text-sm text-foreground/80">
               &gt; Metro: Karunamoyee (nearest)
               <br />

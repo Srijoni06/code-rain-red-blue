@@ -26,6 +26,13 @@ import {
   UsersRound,
 } from "lucide-react";
 
+const FAQ = [
+  ["Who can participate?", "Students, professionals, and independent builders. Team size and eligibility details TBA."],
+  ["Is there a registration fee?", "Fee structure will be announced with the registration launch."],
+  ["Do I need a team to register?", "You can register as a team or as an individual looking for a team."],
+  ["Where and when?", "STPI, Sector V, Kolkata · January 2027. Exact dates TBA."],
+] as const;
+
 export const Route = createFileRoute("/hackathon")({
   head: () => ({
     meta: [
@@ -33,6 +40,24 @@ export const Route = createFileRoute("/hackathon")({
       { name: "description", content: "48-hour hackathon at the GenAI CoE Summit 2027, IEM-UEM. Tracks, prizes and rules coming soon." },
       { property: "og:title", content: "Hackathon — GenAI CoE Summit 2027" },
       { property: "og:description", content: "Enter the 48-hour GenAI hackathon at STPI Sector V, Kolkata." },
+      { property: "og:url", content: "https://code-rain-red-blue.lovable.app/hackathon" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://code-rain-red-blue.lovable.app/hackathon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ.map(([q, a]) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }),
+      },
     ],
   }),
   component: HackathonPage,
@@ -193,18 +218,14 @@ function HackathonPage() {
             <ScrollText className="h-6 w-6" /> FAQ
           </h2>
           <Accordion type="single" collapsible className="mt-4">
-            {[
-              ["Who can participate?", "Students, professionals, and independent builders. Team size and eligibility details TBA."],
-              ["Is there a registration fee?", "Fee structure will be announced with the registration launch."],
-              ["Do I need a team to register?", "You can register as a team or as an individual looking for a team."],
-              ["Where and when?", "STPI, Sector V, Kolkata · January 2027. Exact dates TBA."],
-            ].map(([q, a]) => (
+            {FAQ.map(([q, a]) => (
               <AccordionItem key={q} value={q} className="border-border/50">
                 <AccordionTrigger className="font-mono text-sm text-foreground/90">{q}</AccordionTrigger>
                 <AccordionContent className="font-mono text-sm text-foreground/70">{a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+
         </div>
       </PagePanel>
 

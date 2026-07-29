@@ -57,11 +57,12 @@ export function EntryGate({ onEnter }: { onEnter: () => void }) {
   }
 
   return (
-    <div
+    <main
       className={`relative z-20 flex min-h-screen flex-col items-center justify-center px-4 text-center ${
         transitioning ? "n30-glitching" : ""
       }`}
     >
+
       <div className="mb-10 font-mono text-lg text-[var(--neon-green)] sm:text-2xl">
         <TerminalTyping
           text="Wake up... The GenAI CoE Summit has you."
@@ -99,8 +100,9 @@ export function EntryGate({ onEnter }: { onEnter: () => void }) {
       <p className="mt-16 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
         &gt; the summit awaits
       </p>
-    </div>
+    </main>
   );
+
 }
 
 function SafeRoom({ fading, onDismiss }: { fading: boolean; onDismiss: () => void }) {

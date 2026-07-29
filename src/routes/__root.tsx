@@ -18,7 +18,7 @@ import { N30Chat } from "@/components/N30Chat";
 
 function NotFoundComponent() {
   return (
-    <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
+    <main className="relative z-10 flex min-h-screen items-center justify-center px-4">
       <div className="page-panel max-w-lg rounded-md border border-[var(--neon-red)]/40 p-8 text-center">
         <N30Mascot size="md" interactive={false} />
         <h1 className="mt-6 font-display text-4xl font-black uppercase tracking-widest text-[var(--neon-red)]">
@@ -34,9 +34,10 @@ function NotFoundComponent() {
           Return to the construct
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
+
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);

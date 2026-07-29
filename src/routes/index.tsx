@@ -14,7 +14,7 @@ import { Code2, Presentation, Users, CalendarDays, MapPin } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "GenAI CoE Summit 2027 — IEM-UEM · January 2027 · Kolkata" },
+      { title: "GenAI CoE Summit 2027 — IEM-UEM, Kolkata" },
       {
         name: "description",
         content:
@@ -28,6 +28,45 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:image", content: ogImage.url },
       { name: "twitter:image", content: ogImage.url },
+      { property: "og:url", content: "https://code-rain-red-blue.lovable.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://code-rain-red-blue.lovable.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: "GenAI CoE Summit 2027",
+          description:
+            "Two-day GenAI summit hosted by the Gen AI Center of Excellence at IEM-UEM. Hackathon, project showcase, panels.",
+          startDate: "2027-01-01",
+          endDate: "2027-01-02",
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          location: {
+            "@type": "Place",
+            name: "STPI, Sector V, Kolkata",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Block GP, Sector V, Salt Lake",
+              addressLocality: "Kolkata",
+              addressRegion: "West Bengal",
+              postalCode: "700091",
+              addressCountry: "IN",
+            },
+          },
+          organizer: {
+            "@type": "Organization",
+            name: "Gen AI Center of Excellence, IEM-UEM",
+            url: "https://code-rain-red-blue.lovable.app/",
+          },
+          image: [ogImage.url],
+          url: "https://code-rain-red-blue.lovable.app/",
+        }),
+      },
     ],
   }),
   component: HomeRoute,
