@@ -59,9 +59,10 @@ function VenuePage() {
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           <div className="rounded-md border border-[var(--neon-red)]/60 bg-black/70 p-6">
-            <h3 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-red)]">
+            <h2 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-red)]">
               Address
-            </h3>
+            </h2>
+
             <p className="mt-3 font-mono text-sm text-foreground/80">
               STPI (Software Technology Parks of India)
               <br />
@@ -71,9 +72,10 @@ function VenuePage() {
             </p>
           </div>
           <div className="rounded-md border border-[var(--neon-blue)]/60 bg-black/70 p-6">
-            <h3 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-blue)]">
+            <h2 className="font-display text-lg font-black uppercase tracking-widest text-[var(--neon-blue)]">
               Getting there
-            </h3>
+            </h2>
+
             <p className="mt-3 font-mono text-sm text-foreground/80">
               &gt; Metro: Karunamoyee (nearest)
               <br />

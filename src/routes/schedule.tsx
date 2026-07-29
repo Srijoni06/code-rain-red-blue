@@ -30,6 +30,11 @@ function SchedulePage() {
           Two days. Session details to be finalized closer to the Summit.
         </p>
 
+        <h2 className="mt-10 font-display text-2xl font-black uppercase tracking-widest text-[var(--neon-red)]">
+          Day-by-day sessions
+        </h2>
+
+
         <Tabs defaultValue="d1" className="mt-8">
           <TabsList className="bg-black/70">
             <TabsTrigger value="d1" className="font-mono text-xs uppercase tracking-widest data-[state=active]:text-[var(--neon-red)]">

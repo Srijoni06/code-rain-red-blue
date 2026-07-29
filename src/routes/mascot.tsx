@@ -27,6 +27,11 @@ function MascotPage() {
         </p>
         <GlitchTitle className="mt-4 text-4xl sm:text-6xl">Meet N30</GlitchTitle>
 
+        <h2 className="mt-10 font-display text-xl font-black uppercase tracking-widest text-[var(--neon-blue)]">
+          Character profile
+        </h2>
+
+
         <div className="mt-10 grid gap-10 lg:grid-cols-[auto_1fr] lg:items-center">
           <div className="flex justify-center">
             <N30Mascot size="xl" />
