@@ -21,6 +21,7 @@ import { Route as MascotRouteImport } from './routes/mascot'
 import { Route as HighlightsRouteImport } from './routes/highlights'
 import { Route as HackathonRouteImport } from './routes/hackathon'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShowcaseRegisterRouteImport } from './routes/showcase.register'
 import { Route as ProjectExhibitionRegisterRouteImport } from './routes/project-exhibition.register'
@@ -29,6 +30,7 @@ import { Route as ApiN30ChatRouteImport } from './routes/api/n30-chat'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 
 const VenueRoute = VenueRouteImport.update({
   id: '/venue',
@@ -90,6 +92,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -134,9 +141,15 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
+  id: '/.lovable/oauth/consent',
+  path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
   '/highlights': typeof HighlightsRoute
@@ -155,10 +168,12 @@ export interface FileRoutesByFullPath {
   '/hackathon/register': typeof HackathonRegisterRoute
   '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
   '/highlights': typeof HighlightsRoute
@@ -177,11 +192,13 @@ export interface FileRoutesByTo {
   '/hackathon/register': typeof HackathonRegisterRoute
   '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/hackathon': typeof HackathonRouteWithChildren
   '/highlights': typeof HighlightsRoute
@@ -200,12 +217,14 @@ export interface FileRoutesById {
   '/hackathon/register': typeof HackathonRegisterRoute
   '/project-exhibition/register': typeof ProjectExhibitionRegisterRoute
   '/showcase/register': typeof ShowcaseRegisterRoute
+  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/contact'
     | '/hackathon'
     | '/highlights'
@@ -224,10 +243,12 @@ export interface FileRouteTypes {
     | '/hackathon/register'
     | '/project-exhibition/register'
     | '/showcase/register'
+    | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/contact'
     | '/hackathon'
     | '/highlights'
@@ -246,10 +267,12 @@ export interface FileRouteTypes {
     | '/hackathon/register'
     | '/project-exhibition/register'
     | '/showcase/register'
+    | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
+    | '/auth'
     | '/contact'
     | '/hackathon'
     | '/highlights'
@@ -268,11 +291,13 @@ export interface FileRouteTypes {
     | '/hackathon/register'
     | '/project-exhibition/register'
     | '/showcase/register'
+    | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   HackathonRoute: typeof HackathonRouteWithChildren
   HighlightsRoute: typeof HighlightsRoute
@@ -288,6 +313,7 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ApiN30ChatRoute: typeof ApiN30ChatRoute
+  DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
@@ -377,6 +403,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -433,6 +466,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.lovable/oauth/consent': {
+      id: '/.lovable/oauth/consent'
+      path: '/.lovable/oauth/consent'
+      fullPath: '/.lovable/oauth/consent'
+      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -473,6 +513,7 @@ const ShowcaseRouteWithChildren = ShowcaseRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   HackathonRoute: HackathonRouteWithChildren,
   HighlightsRoute: HighlightsRoute,
@@ -489,6 +530,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ApiN30ChatRoute: ApiN30ChatRoute,
+  DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
